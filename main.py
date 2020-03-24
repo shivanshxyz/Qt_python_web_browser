@@ -156,5 +156,10 @@ class MainWindow(QMainWindow):
                                      self.tabs.setTabText(i, browser.page().title()))
 
     def tab_open_doubleclick(self, i):
-        if i == -1:  
+        if i == -1:
             self.add_new_tab()
+
+    def current_tab_changed(self, i):
+        qurl = self.tabs.currentWidget().url()
+        self.update_urlbar(qurl, self.tabs.currentWidget())
+        self.update_title(self.tabs.currentWidget())
