@@ -207,3 +207,13 @@ class MainWindow(QMainWindow):
         dlg = QPrintPreviewDialog()
         dlg.paintRequested.connect(self.browser.print_)
         dlg.exec_()
+
+    def navigate_home(self):
+        self.tabs.currentWidget().setUrl(QUrl("http://www.google.com"))
+
+    def navigate_to_url(self):  # Does not receive the Url
+        q = QUrl(self.urlbar.text())
+        if q.scheme() == "":
+            q.setScheme("http")
+
+        self.tabs.currentWidget().setUrl(q)
