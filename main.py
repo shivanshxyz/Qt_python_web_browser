@@ -137,3 +137,20 @@ class MainWindow(QMainWindow):
 
         self.setWindowTitle("Browser")
         self.setWindowIcon(QIcon(os.path.join('images', 'ma-icon-64.png')))
+
+def add_new_tab(self, qurl=None, label="Blank"):
+
+        if qurl is None:
+            qurl = QUrl('')
+
+        browser = QWebEngineView()
+        browser.setUrl(qurl)
+        i = self.tabs.addTab(browser, label)
+
+        self.tabs.setCurrentIndex(i)
+
+        browser.urlChanged.connect(lambda qurl, browser=browser:
+                                   self.update_urlbar(qurl, browser))
+
+        browser.loadFinished.connect(lambda _, i=i, browser=browser:
+                                     self.tabs.setTabText(i, browser.page().title()))
