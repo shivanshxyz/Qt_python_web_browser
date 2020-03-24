@@ -169,3 +169,10 @@ class MainWindow(QMainWindow):
             return
 
         self.tabs.removeTab(i)
+
+    def update_title(self, browser):
+        if browser != self.tabs.currentWidget():
+            return
+
+        title = self.tabs.currentWidget().page().title()
+        self.setWindowTitle("%s - Mozarella Ashbadger" % title)
