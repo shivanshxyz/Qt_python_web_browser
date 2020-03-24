@@ -211,7 +211,7 @@ class MainWindow(QMainWindow):
     def navigate_home(self):
         self.tabs.currentWidget().setUrl(QUrl("http://www.google.com"))
 
-    def navigate_to_url(self):  # Does not receive the Url
+    def navigate_to_url(self):
         q = QUrl(self.urlbar.text())
         if q.scheme() == "":
             q.setScheme("http")
@@ -231,3 +231,12 @@ class MainWindow(QMainWindow):
 
         self.urlbar.setText(q.toString())
         self.urlbar.setCursorPosition(0)
+
+app = QApplication(sys.argv)
+app.setApplicationName("Mozarella Ashbadger")
+app.setOrganizationName("Mozarella")
+app.setOrganizationDomain("mozarella.org")
+
+window = MainWindow()
+
+app.exec_()
