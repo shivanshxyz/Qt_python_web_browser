@@ -97,3 +97,8 @@ class MainWindow(QMainWindow):
         # self.menuBar().setNativeMenuBar(False)
 
         file_menu = self.menuBar().addMenu("&File")
+
+         new_tab_action = QAction(QIcon(os.path.join('images', 'ui-tab--plus.png')), "New Tab", self)
+        new_tab_action.setStatusTip("Open a new tab")
+        new_tab_action.triggered.connect(lambda _: self.add_new_tab())
+        file_menu.addAction(new_tab_action)
