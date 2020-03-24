@@ -138,7 +138,7 @@ class MainWindow(QMainWindow):
         self.setWindowTitle("Browser")
         self.setWindowIcon(QIcon(os.path.join('images', 'ma-icon-64.png')))
 
-def add_new_tab(self, qurl=None, label="Blank"):
+    def add_new_tab(self, qurl=None, label="Blank"):
 
         if qurl is None:
             qurl = QUrl('')
@@ -154,3 +154,7 @@ def add_new_tab(self, qurl=None, label="Blank"):
 
         browser.loadFinished.connect(lambda _, i=i, browser=browser:
                                      self.tabs.setTabText(i, browser.page().title()))
+
+    def tab_open_doubleclick(self, i):
+        if i == -1:  
+            self.add_new_tab()
