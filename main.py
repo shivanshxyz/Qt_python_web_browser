@@ -38,3 +38,18 @@ class AboutDialog(QDialog):
         layout.addWidget(self.buttonBox)
 
         self.setLayout(layout)
+
+class MainWindow(QMainWindow):
+    def __init__(self, *args, **kwargs):
+        super(MainWindow, self).__init__(*args, **kwargs)
+
+        self.tabs = QTabWidget()
+        self.tabs.setDocumentMode(True)
+        self.tabs.tabBarDoubleClicked.connect(self.tab_open_doubleclick)
+        self.tabs.currentChanged.connect(self.current_tab_changed)
+        self.tabs.setTabsClosable(True)
+        self.tabs.tabCloseRequested.connect(self.close_current_tab)
+
+        self.setCentralWidget(self.tabs)
+
+        
