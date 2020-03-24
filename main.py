@@ -175,4 +175,20 @@ class MainWindow(QMainWindow):
             return
 
         title = self.tabs.currentWidget().page().title()
-        self.setWindowTitle("%s - Browser" % tistle)
+        self.setWindowTitle("%s - Browser" % title)
+
+    def about(self):
+        dlg = AboutDialog()
+        dlg.exec_()
+
+    def open_file(self):
+        filename, _ = QFileDialog.getOpenFileName(self, "Open file", "",
+                                                  "Hypertext Markup Language (*.htm *.html);;"
+                                                  "All files (*.*)")
+
+        if filename:
+            with open(filename, 'r') as f:
+                html = f.read()
+
+            self.tabs.currentWidget().setHtml(html)
+            self.urlbar.setText(filename)
