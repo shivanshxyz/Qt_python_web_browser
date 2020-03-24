@@ -192,3 +192,13 @@ class MainWindow(QMainWindow):
 
             self.tabs.currentWidget().setHtml(html)
             self.urlbar.setText(filename)
+
+    def save_file(self):
+        filename, _ = QFileDialog.getSaveFileName(self, "Save Page As", "",
+                                                  "Hypertext Markup Language (*.htm *html);;"
+                                                  "All files (*.*)")
+
+        if filename:
+            html = self.tabs.currentWidget().page().toHtml()
+            with open(filename, 'w') as f:
+                f.write(html.encode('utf8'))
