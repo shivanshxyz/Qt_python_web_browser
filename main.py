@@ -202,3 +202,8 @@ class MainWindow(QMainWindow):
             html = self.tabs.currentWidget().page().toHtml()
             with open(filename, 'w') as f:
                 f.write(html.encode('utf8'))
+
+    def print_page(self):
+        dlg = QPrintPreviewDialog()
+        dlg.paintRequested.connect(self.browser.print_)
+        dlg.exec_()
