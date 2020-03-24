@@ -52,4 +52,35 @@ class MainWindow(QMainWindow):
 
         self.setCentralWidget(self.tabs)
 
-        
+        self.status = QStatusBar()
+        self.setStatusBar(self.status)
+
+        navtb = QToolBar("Navigation")
+        navtb.setIconSize(QSize(16, 16))
+        self.addToolBar(navtb)
+
+        back_btn = QAction(QIcon(os.path.join('images', 'arrow-180.png')), "Back", self)
+        back_btn.setStatusTip("Back to previous page")
+        back_btn.triggered.connect(lambda: self.tabs.currentWidget().back())
+        navtb.addAction(back_btn)
+
+        next_btn = QAction(QIcon(os.path.join('images', 'arrow-000.png')), "Forward", self)
+        next_btn.setStatusTip("Forward to next page")
+        next_btn.triggered.connect(lambda: self.tabs.currentWidget().forward())
+        navtb.addAction(next_btn)
+
+        reload_btn = QAction(QIcon(os.path.join('images', 'arrow-circle-315.png')), "Reload", self)
+        reload_btn.setStatusTip("Reload page")
+        reload_btn.triggered.connect(lambda: self.tabs.currentWidget().reload())
+        navtb.addAction(reload_btn)
+
+         home_btn = QAction(QIcon(os.path.join('images', 'home.png')), "Home", self)
+        home_btn.setStatusTip("Go home")
+        home_btn.triggered.connect(self.navigate_home)
+        navtb.addAction(home_btn)
+
+        navtb.addSeparator()
+
+        self.httpsicon = QLabel()
+        self.httpsicon.setPixmap(QPixmap(os.path.join('images', 'lock-nossl.png')))
+        navtb.addWidget(self.httpsicon)
