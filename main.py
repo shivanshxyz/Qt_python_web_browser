@@ -163,3 +163,9 @@ class MainWindow(QMainWindow):
         qurl = self.tabs.currentWidget().url()
         self.update_urlbar(qurl, self.tabs.currentWidget())
         self.update_title(self.tabs.currentWidget())
+
+    def close_current_tab(self, i):
+        if self.tabs.count() < 2:
+            return
+
+        self.tabs.removeTab(i)
