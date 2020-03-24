@@ -124,3 +124,16 @@ class MainWindow(QMainWindow):
         about_action.setStatusTip("Find out more")
         about_action.triggered.connect(self.about)
         help_menu.addAction(about_action)
+
+        navigate_browser_action = QAction(QIcon(os.path.join('images', 'lifebuoy.png')),
+                                            "Browser Homepage", self)
+        navigate_browser_action.setStatusTip("Go to Browser Homepage")
+        navigate_browser_action.triggered.connect(self.navigate_broswer)
+        help_menu.addAction(navigate_browser_action)
+
+        self.add_new_tab(QUrl('http://www.google.com'), 'Homepage')
+
+        self.show()
+
+        self.setWindowTitle("Browser")
+        self.setWindowIcon(QIcon(os.path.join('images', 'ma-icon-64.png')))
