@@ -112,3 +112,10 @@ class MainWindow(QMainWindow):
         save_file_action.setStatusTip("Save current page to file")
         save_file_action.triggered.connect(self.save_file)
         file_menu.addAction(save_file_action)
+
+        print_action = QAction(QIcon(os.path.join('images', 'printer.png')), "Print...", self)
+        print_action.setStatusTip("Print current page")
+        print_action.triggered.connect(self.print_page)
+        file_menu.addAction(print_action)
+
+        
