@@ -107,3 +107,8 @@ class MainWindow(QMainWindow):
         open_file_action.setStatusTip("Open from file")
         open_file_action.triggered.connect(self.open_file)
         file_menu.addAction(open_file_action)
+
+        save_file_action = QAction(QIcon(os.path.join('images', 'disk--pencil.png')), "Save Page As...", self)
+        save_file_action.setStatusTip("Save current page to file")
+        save_file_action.triggered.connect(self.save_file)
+        file_menu.addAction(save_file_action)
