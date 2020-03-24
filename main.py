@@ -84,3 +84,16 @@ class MainWindow(QMainWindow):
         self.httpsicon = QLabel()
         self.httpsicon.setPixmap(QPixmap(os.path.join('images', 'lock-nossl.png')))
         navtb.addWidget(self.httpsicon)
+
+         self.urlbar = QLineEdit()
+        self.urlbar.returnPressed.connect(self.navigate_to_url)
+        navtb.addWidget(self.urlbar)
+
+        stop_btn = QAction(QIcon(os.path.join('images', 'cross-circle.png')), "Stop", self)
+        stop_btn.setStatusTip("Stop loading current page")
+        stop_btn.triggered.connect(lambda: self.tabs.currentWidget().stop())
+        navtb.addAction(stop_btn)
+
+        # self.menuBar().setNativeMenuBar(False)
+
+        file_menu = self.menuBar().addMenu("&File")
