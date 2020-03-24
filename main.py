@@ -175,4 +175,4 @@ class MainWindow(QMainWindow):
             return
 
         title = self.tabs.currentWidget().page().title()
-        self.setWindowTitle("%s - Mozarella Ashbadger" % title)
+        self.setWindowTitle("%s - Browser" % tistle)
