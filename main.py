@@ -18,7 +18,7 @@ class AboutDialog(QDialog):
 
         layout = QVBoxLayout()
 
-        title = QLabel("Mozarella Ashbadger")
+        title = QLabel("BROWSER")
         font = title.font()
         font.setPointSize(20)
         title.setFont(font)
@@ -30,7 +30,7 @@ class AboutDialog(QDialog):
         layout.addWidget(logo)
 
         layout.addWidget(QLabel("Version 23.35.211.233232"))
-        layout.addWidget(QLabel("Copyright 2015 Mozarella Inc."))
+        layout.addWidget(QLabel("Copyright 2020 Shivansh Yadav"))
 
         for i in range(0, layout.count()):
             layout.itemAt(i).setAlignment(Qt.AlignHCenter)
@@ -118,4 +118,9 @@ class MainWindow(QMainWindow):
         print_action.triggered.connect(self.print_page)
         file_menu.addAction(print_action)
 
-        
+        help_menu = self.menuBar().addMenu("&Help")
+
+        about_action = QAction(QIcon(os.path.join('images', 'question.png')), "About Browser", self)
+        about_action.setStatusTip("Find out more")
+        about_action.triggered.connect(self.about)
+        help_menu.addAction(about_action)
