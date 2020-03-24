@@ -217,3 +217,17 @@ class MainWindow(QMainWindow):
             q.setScheme("http")
 
         self.tabs.currentWidget().setUrl(q)
+
+    def update_urlbar(self, q, browser=None):
+
+        if browser != self.tabs.currentWidget():
+            return
+
+        if q.scheme() == 'https':
+            self.httpsicon.setPixmap(QPixmap(os.path.join('images', 'lock-ssl.png')))
+
+        else:
+            self.httpsicon.setPixmap(QPixmap(os.path.join('images', 'lock-nossl.png')))
+
+        self.urlbar.setText(q.toString())
+        self.urlbar.setCursorPosition(0)
