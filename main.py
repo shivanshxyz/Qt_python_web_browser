@@ -233,9 +233,9 @@ class MainWindow(QMainWindow):
         self.urlbar.setCursorPosition(0)
 
 app = QApplication(sys.argv)
-app.setApplicationName("Mozarella Ashbadger")
-app.setOrganizationName("Mozarella")
-app.setOrganizationDomain("mozarella.org")
+app.setApplicationName("Browser")
+app.setOrganizationName("Shivansh Yadav")
+app.setOrganizationDomain("shivansh.cc")
 
 window = MainWindow()
 
